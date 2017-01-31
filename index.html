@@ -90,14 +90,12 @@
 
 		//create one circle when the game starts
 		this.createNewCircle(document.body.clientWidth/2, document.body.clientHeight/2,10);
+		this.createNewCircle(document.body.clientWidth/3, document.body.clientHeight/3,15);
+
 	}
 
 	var playground = new PlayGround();
 	setInterval(playground.loop, 15);
-
-	// document.onclick = function(e) {
-	// 	playground.createNewCircle(e.x,e.y,10);
-	// }
 
 	var mousedown_time;
 
@@ -113,9 +111,11 @@
 		time_pressed = getTime() - mousedown_time;
 		if(time_pressed > 1500) {
 			time_pressed = 1500;
+		} else if (time_pressed < 30) {
+			time_pressed = 30;
 		}
 		playground.createNewCircle(e.x,e.y,time_pressed/10);
-		console.log('You held your mouse down for', time_pressed, 'miliseconds.');
+		// console.log('You held your mouse down for', time_pressed, 'miliseconds.');
 	}
 
 
