@@ -7,8 +7,9 @@
 	<svg id="svg" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"></svg>
 
 	<script>
-	function Circle(cx, cy, html_id, r)
+	function Circle(cx, cy, html_id, r, cColor)
 	{
+		var cColor = cColor;
 		var html_id = html_id;
 		this.info = { cx: cx,  cy: cy, r: r };
 
@@ -30,7 +31,7 @@
 				  	cy: this.info.cy,
 				  	r:  this.info.r,
 				  	id: html_id,
-				  	style: "fill: black"
+				  	style: "fill: " + cColor
 				});
 
 			document.getElementById('svg').appendChild(circle);
@@ -83,7 +84,8 @@
 		}
 
 		this.createNewCircle = function(x,y,r){
-			var new_circle = new Circle(x,y,counter++,r);
+			var color = '#' + ("000000" + Math.random().toString(16).slice(2, 8).toUpperCase()).slice(-6);
+			var new_circle = new Circle(x,y,counter++,r,color);
 			circles.push(new_circle);
 			// console.log('created a new circle!', new_circle);
 		}
